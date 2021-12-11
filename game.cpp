@@ -95,9 +95,9 @@ void game::HandleEvents() // Handle Various events happening
 
 void game::generateObstacles()
 {
-	// sleep(3);
 	Obstacle *obs = new Obstacle("assets/vm.png", renderer, window_width, window_height);
 	obsList.push_back(obs);
+	std::cout << "Obstacle Generated" << std::endl;
 }
 
 void game::update() // Game Logic is Handled Here

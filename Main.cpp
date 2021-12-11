@@ -6,20 +6,18 @@ int main(int argc, char *args[])
 
 	const int FPS = 60;
 	const int Frame_Delay = 1000 / FPS; // Expected Time between Frames
-
+	int Frame_Index = 0;
 	Uint32 FrameStart;
 	int frametime;
 
-	long long int count = 0;
 	while (g->Is_Running())
 	{
 		FrameStart = SDL_GetTicks();
+		// std::cout << Frame_Index << std::endl;
 
 		g->HandleEvents();
-		if (count % 10 == 0)
-		{
+		if (!(Frame_Index % 150))
 			g->generateObstacles();
-		}
 		g->update();
 		g->render();
 
@@ -28,9 +26,8 @@ int main(int argc, char *args[])
 		{
 			SDL_Delay(Frame_Delay - frametime);
 		}
-		count++;
+		Frame_Index++;
 	}
-	// std::cout << count << std::endl;
 	g->clean();
 	return (0);
 }
